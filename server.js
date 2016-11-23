@@ -38,11 +38,11 @@ app.post('/api/prateleira', function(request, response){
 });
 
 app.get('/', function(req, res){
-  res.sendFile('index.html');
+  res.sendFile(__dirname + '/index.html');
 });
 
 app.get('/css/style.css', function(req, res){
-  res.sendFile('css/style.css');
+  res.sendFile(__dirname + '/css/style.css');
 });
  
 io.on('connection', function(socket){
