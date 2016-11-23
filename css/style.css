@@ -142,9 +142,11 @@ html{
   opacity: .1;
 }
 
+/*
 .active{
 	opacity: 1;
 }
+*/
 
 /*
 @keyframes red{

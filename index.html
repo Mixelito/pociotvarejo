@@ -67,15 +67,10 @@
 
       //ESCUTA DO WEBSOCKET AGUARDANDO ACAO
       socket.on('atualiza_ae', function(plateleiras) {
-        console.log(plateleiras);
-
+        
         $.each(plateleiras, function( index, value ) {
           var traffic = $('#traffic'+value.id);
 
-          //desligar
-          traffic.find('.led').removeClass('active');
-
-          //ligar
           var posicao;
           if(value.status==1){
             posicao = 'red';
@@ -84,7 +79,25 @@
           }else if(value.status==3){
             posicao = 'green';
           }
-          traffic.find('.'+posicao).addClass('active');
+
+          $( '#traffic'+value.id+' .led' ).each(function( index ) {
+            if( $( this ).hasClass(posicao) ){
+
+              //se ja estiver ativo nao faz nada
+              if( ! $( this ).hasClass('active') ){
+                $( this ).addClass('active');
+                $( this ).fadeTo( "slow", 1 );
+              }
+
+            }else{
+              $( this ).fadeTo( "slow", .1 );
+              if( $( this ).hasClass('active') ){
+                $( this ).removeClass('active');
+                $( this ).fadeTo( "slow", .1 );
+              }
+            }
+          });
+
         });
 
       });

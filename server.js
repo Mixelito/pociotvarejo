@@ -8,8 +8,8 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 
 
-app.use(bodyParser.json()); // support json encoded bodies
-app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 var io = require('socket.io')(http);
 
@@ -27,7 +27,7 @@ app.post('/api/prateleira', function(request, response){
           value.status=request.body.status;
         }
       }
-      console.log(prateleiras);
+
       io.emit('atualiza_ae', prateleiras);
 
       response.json({ message: "Status da prateleira #"+request.body.id+" alterado."});
@@ -45,7 +45,6 @@ app.get('/css/style.css', function(req, res){
   res.sendfile('css/style.css');
 });
  
-// Quando tivermos uma chamada para o nosso socket iremos logar no terminal uma mensagem de novo usuário
 io.on('connection', function(socket){
   io.emit('atualiza_ae', prateleiras);
 });
