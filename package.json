@@ -2,6 +2,9 @@
   "name": "varejo-iot-api-poc-websocket",
   "version": "0.0.1",
   "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
     "bootstrap": "^3.3.7",
     "express": "^4.10.2",

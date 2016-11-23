@@ -50,8 +50,12 @@ io.on('connection', function(socket){
   io.emit('atualiza_ae', prateleiras);
 });
  
-http.listen(3000, function(){
-  console.log('listening on *:3000');
+// set the port of our application
+// process.env.PORT lets the port be set by Heroku
+var port = process.env.PORT || 8080;
+
+app.listen(port, function() {
+    console.log('Our app is running on http://localhost:' + port);
 });
 
 function server_talk(servidor, msg){
