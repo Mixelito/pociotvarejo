@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>POC IOT Varejo</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="conteudo">
+
+      <!-- Main component for a primary marketing message or call to action -->
+
+        <div class="prateleira" id="traffic1">
+          <span class="pid">#1</span>
+          <div class="trafficlight">
+            <div class="protector"></div>
+            <div class="protector"></div>
+            <div class="protector"></div>
+            <div class="led red"></div>
+            <div class="led yellow"></div>
+            <div class="led green"></div>
+          </div>
+        </div>
+
+        <div class="prateleira" id="traffic2">
+          <span class="pid">#2</span>
+          <div class="trafficlight">
+            <div class="protector"></div>
+            <div class="protector"></div>
+            <div class="protector"></div>
+            <div class="led red"></div>
+            <div class="led yellow"></div>
+            <div class="led green"></div>
+          </div>
+        </div>
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script>
+      var socket = io();
+
+      
+
+      //ESCUTA DO WEBSOCKET AGUARDANDO ACAO
+      socket.on('atualiza_ae', function(plateleiras) {
+        console.log(plateleiras);
+
+        $.each(plateleiras, function( index, value ) {
+          var traffic = $('#traffic'+value.id);
+
+          //desligar
+          traffic.find('.led').removeClass('active');
+
+          //ligar
+          var posicao;
+          if(value.status==1){
+            posicao = 'red';
+          }else if(value.status==2){
+            posicao = 'yellow'
+          }else if(value.status==3){
+            posicao = 'green';
+          }
+          traffic.find('.'+posicao).addClass('active');
+        });
+
+      });
+    </script>
+  </body>
+</html>
