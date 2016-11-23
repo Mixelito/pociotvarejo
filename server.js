@@ -19,7 +19,7 @@ var prateleiras = [
 ];
 
 app.post('/api/prateleira', function(request, response){
-    if(request.body.id && request.body.status){
+    if(request.body.id){
       
       for (var i in prateleiras) {
         value = prateleiras[i];
@@ -38,11 +38,11 @@ app.post('/api/prateleira', function(request, response){
 });
 
 app.get('/', function(req, res){
-  res.sendfile('index.html');
+  res.sendFile('index.html');
 });
 
 app.get('/css/style.css', function(req, res){
-  res.sendfile('css/style.css');
+  res.sendFile('css/style.css');
 });
  
 io.on('connection', function(socket){
