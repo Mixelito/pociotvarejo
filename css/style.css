@@ -143,43 +143,40 @@ html{
   opacity: .1;
 }
 
-/*
-.active{
-	opacity: 1;
-}
-*/
-
-/*
-@keyframes red{
-  0%{opacity: 1}
-  20%{opacity: 1}
-  40%{opacity: 1}
-  60%{opacity: .1}
-  80%{opacity: .1}
-  100%{opacity: .1}
+.circle {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  float: left;
+  border: 1px solid #666;
 }
 
-@keyframes yellow{
-  0%{opacity: .1}
-  20%{opacity: .1}
-  40%{opacity: 1}
-  50%{opacity: .1}
-  60%{opacity: .1}
-  80%{opacity: .1}
-  100%{opacity: .1}
+#legenda{
+  position: absolute;
+  border: 2px solid #333;
+  border-radius: 7px;
+  padding: 15px;
+  left: 215px;
+  top: 100px;
+  width: 280px;
+  background: #EEE;
 }
-
-@keyframes green{
-  0%{opacity: .1}
-  20%{opacity: .1}
-  40%{opacity: .1}
-  60%{opacity: 1}
-  80%{opacity: 1}
-  83%{opacity: .1}
-  86%{opacity: 1}
-  89%{opacity: .1}
-  93%{opacity: 1}
-  96%{opacity: .1}
-  100%{opacity: 1}
+#legenda ul{
+  margin: 0px;
+  padding: 0px;
 }
-*/
+#legenda ul li{
+  list-style: none;
+}
+#legenda ul li span{
+  margin-right: 15px;
+}
+#legenda .lgreen{
+  background: green;
+}
+#legenda .lred{
+  background: red;
+}
+#legenda .lyellow{
+  background: yellow;
+}
