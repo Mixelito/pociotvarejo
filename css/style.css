@@ -167,6 +167,7 @@ html{
 }
 #legenda ul li{
   list-style: none;
+  padding: 1px 0px;
 }
 #legenda ul li span{
   margin-right: 15px;
