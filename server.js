@@ -50,7 +50,7 @@ app.get('/css/style.css', function(req, res){
 });
 
 app.get('/css/style_status.css', function(req, res){
-  res.sendFile(__dirname + '/css/style.css');
+  res.sendFile(__dirname + '/css/style_status.css');
 });
 
 app.get('/img/wood-shelves.png', function(req, res){
