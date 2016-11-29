@@ -41,7 +41,15 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
+app.get('/status/', function(req, res){
+  res.sendFile(__dirname + '/status.html');
+});
+
 app.get('/css/style.css', function(req, res){
+  res.sendFile(__dirname + '/css/style.css');
+});
+
+app.get('/css/style_status.css', function(req, res){
   res.sendFile(__dirname + '/css/style.css');
 });
 
