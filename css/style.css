@@ -18,6 +18,7 @@ html{
   background: url(../img/wood-shelves.png);
   float: left;
   margin-top: 30px;
+  border: #333 solid 4px;
 }
 
 .prateleira{
@@ -56,7 +57,7 @@ html{
   float: left;
   width: 100%;
   margin-top: 62px;
-  margin-left:10px;
+  margin-left:3px;
 }
 
 #traffic2{
