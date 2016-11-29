@@ -14,8 +14,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 var io = require('socket.io')(http);
 
 var prateleiras = [
-  {"id":1,"status":null},
-  {"id":2,"status":null}
+  {"id":1,"status":1},
+  {"id":2,"status":1}
 ];
 
 app.post('/api/prateleira', function(request, response){
