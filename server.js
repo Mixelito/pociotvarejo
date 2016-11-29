@@ -44,7 +44,19 @@ app.get('/', function(req, res){
 app.get('/css/style.css', function(req, res){
   res.sendFile(__dirname + '/css/style.css');
 });
- 
+
+app.get('/img/wood-shelves.png', function(req, res){
+  res.sendFile(__dirname + '/img/wood-shelves.png');
+});
+
+app.get('/img/bravo.png', function(req, res){
+  res.sendFile(__dirname + '/img/bravo.png');
+});
+
+app.get('/img/biscoito.png', function(req, res){
+  res.sendFile(__dirname + '/img/biscoito.png');
+}); 
+
 io.on('connection', function(socket){
   io.emit('atualiza_ae', prateleiras);
 });

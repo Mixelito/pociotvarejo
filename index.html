@@ -27,37 +27,43 @@
 
       <!-- Main component for a primary marketing message or call to action -->
 
+      <div id="prateleiras">
+        
         <div class="prateleira" id="traffic1">
-          <span class="pid">#1</span>
-          <div class="trafficlight">
-            <div class="protector"></div>
-            <div class="protector"></div>
-            <div class="protector"></div>
-            <div class="led red"></div>
-            <div class="led yellow"></div>
-            <div class="led green"></div>
-          </div>
+          <span class="pimenta"></span>
+          <span class="pimenta"></span>
+          <span class="pimenta"></span>
+          <span class="pimenta"></span>
+          <span class="pimenta"></span>
+          <span class="pimenta"></span>
+          <span class="pimenta"></span>
+          <span class="pimenta"></span>
+          <span class="pimenta"></span>
+          <span class="pimenta"></span>
+          <span class="pimenta"></span>
+          <span class="pimenta"></span>
+          <span class="pimenta"></span>
         </div>
 
-        <div id="legenda">
-          <ul>
-            <li><span class="lred circle"></span> Prateleira sem produto</li>
-            <li><span class="lyellow circle"></span> Prateleira com produto incorreto</li>
-            <li><span class="lgreen circle"></span> Prateleira com produto</li>
-          </ul>
-        </div>
 
         <div class="prateleira" id="traffic2">
-          <span class="pid">#2</span>
-          <div class="trafficlight">
-            <div class="protector"></div>
-            <div class="protector"></div>
-            <div class="protector"></div>
-            <div class="led red"></div>
-            <div class="led yellow"></div>
-            <div class="led green"></div>
-          </div>
+          <span class="biscoito"></span>
+          <span class="biscoito"></span>
+          <span class="biscoito"></span>
+          <span class="biscoito"></span>
+          <span class="biscoito"></span>
+          <span class="biscoito"></span>
+          <span class="biscoito"></span>
+          <span class="biscoito"></span>
+          <span class="biscoito"></span>
+          <span class="biscoito"></span>
+          <span class="biscoito"></span>
+          <span class="biscoito"></span>
         </div>
+
+      </div>
+
+        
 
         
 
@@ -71,45 +77,89 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script>
+
+    function mt_rand (min, max) {
+     // http://jsphp.co/jsphp/fn/view/mt_rand
+     // + original by: Onno Marsman
+     // * example 1: mt_rand(1, 1);
+     // * returns 1: 1
+     var argc = arguments.length;
+     if (argc === 0) {
+         min = 0;
+         max = 2147483647;
+     } else if (argc === 1) {
+         throw new Error('Warning: mt_rand() expects exactly 2 parameters, 1 given');
+      }
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
       var socket = io();
 
-      
+      var prateleiras=null;
 
       //ESCUTA DO WEBSOCKET AGUARDANDO ACAO
       socket.on('atualiza_ae', function(plateleiras) {
-        
+        console.log(prateleiras);
+          console.log(plateleiras);
         $.each(plateleiras, function( index, value ) {
-          var traffic = $('#traffic'+value.id);
 
-          var posicao;
-          if(value.status==1){
-            posicao = 'red';
-          }else if(value.status==2){
-            posicao = 'yellow'
-          }else if(value.status==3){
-            posicao = 'green';
+          var pula=false;
+          if(prateleiras!=null){
+            $.each(prateleiras, function( index2, value2 ) {
+              if(value2.id==value.id && value2.status==value.status)
+                pula=true;
+            });
           }
+          if(!pula){
 
-          $( '#traffic'+value.id+' .led' ).each(function( index ) {
-            if( $( this ).hasClass(posicao) ){
+            var traffic = $('#traffic'+value.id);
+            var produto;
+            var pimenta='pimenta';
+            var biscoito='biscoito';
+            if(value.id==1){
+              produto=pimenta;
+            }else if(value.id==2){
+              produto=biscoito;
+            }
 
-              //se ja estiver ativo nao faz nada
-              if( ! $( this ).hasClass('active') ){
-                $( this ).addClass('active');
-                $( this ).fadeTo( "slow", 1 );
+            var posicao;
+            if(value.status==1){
+              if(value.id==1){
+                posicao='pimenta';
+              }else if(value.id==2){
+                posicao='biscoito';
               }
-
-            }else{
-              $( this ).fadeTo( "slow", .1 );
-              if( $( this ).hasClass('active') ){
-                $( this ).removeClass('active');
-                $( this ).fadeTo( "slow", .1 );
+            }else if(value.status==2){
+              if(value.id==1){
+                posicao='biscoito';
+              }else if(value.id==2){
+                posicao='pimenta';
+              }
+            }else if(value.status==3){
+              
+              if(value.id==1){
+                posicao='pimenta_none';
+              }else if(value.id==2){
+                posicao='biscoito_none';
               }
             }
-          });
 
+            var index_rand = mt_rand(0,11);
+
+            $( '#traffic'+value.id+' span' ).each(function( index ) {
+              $( this ).removeClass('pimenta');
+              $( this ).removeClass('biscoito');
+              $( this ).removeClass('pimenta_none');
+              $( this ).removeClass('biscoito_none');
+              if( index_rand==index ){
+                $( this ).addClass(posicao);
+              }else{
+                $( this ).addClass(produto);
+              }
+            });
+          }
+          
         });
-
+        prateleiras=plateleiras;
       });
     </script>
   </body>
