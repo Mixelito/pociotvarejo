@@ -53,8 +53,8 @@ app.get('/css/style_status.css', function(req, res){
   res.sendFile(__dirname + '/css/style_status.css');
 });
 
-app.get('/img/wood-shelves.png', function(req, res){
-  res.sendFile(__dirname + '/img/wood-shelves.png');
+app.get('/img/wood-shelves.jpg', function(req, res){
+  res.sendFile(__dirname + '/img/wood-shelves.jpg');
 });
 
 app.get('/img/bravo.png', function(req, res){
