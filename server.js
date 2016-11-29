@@ -60,10 +60,16 @@ app.get('/img/wood-shelves.png', function(req, res){
 app.get('/img/bravo.png', function(req, res){
   res.sendFile(__dirname + '/img/bravo.png');
 });
+app.get('/img/bravo_off.png', function(req, res){
+  res.sendFile(__dirname + '/img/bravo_off.png');
+});
 
 app.get('/img/biscoito.png', function(req, res){
   res.sendFile(__dirname + '/img/biscoito.png');
 }); 
+app.get('/img/biscoito_off.png', function(req, res){
+  res.sendFile(__dirname + '/img/biscoito_off.png');
+});
 
 io.on('connection', function(socket){
   io.emit('atualiza_ae', prateleiras);

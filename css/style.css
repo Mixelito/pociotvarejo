@@ -25,49 +25,47 @@ html{
 }
 
 .pimenta{
-  width: 62px;
-  height: 129px;
+  width: 125px;
+  height: 122px;
   float: left;
   background: url(../img/bravo.png);
-  margin-right:-20px;
 }
 
 .pimenta_none{
-  width: 62px;
-  height: 129px;
+  width: 125px;
+  height: 122px;
   float: left;
-  background-color: #f5f5f5;
-  border: 5px dashed #FF0000;
-  margin-right:-20px;
+  background: url(../img/bravo_off.png);
 }
 
 .biscoito{
-  width: 67px;
-  height: 129px;
+  width: 99px;
+  height: 121px;
   float: left;
   background: url(../img/biscoito.png);
-  margin-right:-20px;
 }
 
 .biscoito_none{
-  width: 67px;
-  height: 129px;
+  width: 99px;
+  height: 121px;
   float: left;
-  background-color: #f5f5f5;
-  border: 5px dashed #FF0000;
-  margin-right: -20px;
+  background: url(../img/biscoito_off.png);
 }
 
 #traffic1{
   float: left;
   width: 100%;
-  margin-top: 57px;
-  margin-left:30px;
+  margin-top: 62px;
+  margin-left:10px;
 }
 
 #traffic2{
   float: left;
   width: 100%;
-  margin-top: 47px;
-  margin-left:30px;
+  margin-top: 55px;
+  margin-left:20px;
+}
+
+#traffic2 .biscoito{
+  margin: 0 10px;
 }
